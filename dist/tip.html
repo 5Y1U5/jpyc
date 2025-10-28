@@ -240,7 +240,7 @@
                         React.createElement('div', { className: 'space-y-2' },
                             React.createElement('label', { className: 'text-sm font-medium' }, '金額を選択'),
                             React.createElement('div', { className: 'grid grid-cols-3 gap-3 mb-3' },
-                                [10, 50, 100].map(preset =>
+                                (selectedToken === 'JPYC' ? [1500, 7500, 15000] : [10, 50, 100]).map(preset =>
                                     React.createElement('button', {
                                         key: preset,
                                         onClick: () => setAmount(preset.toString()),
