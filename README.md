@@ -2,37 +2,41 @@
 
 暗号資産（JPYC、USDC）を使用した投げ銭システム。クリエイターやコンテンツ制作者が簡単に支援を受けられるプラットフォームです。
 
+## 🌐 本番環境URL
+
+- **メイン**: https://jpyc-tip.pages.dev
+- **GitHub**: https://github.com/5Y1U5/jpyc
+
 ## 🌟 主要機能
 
 ### ✅ 完成済み機能
 
 - **埋め込みコード生成** - 簡単にWebサイトに投げ銭ウィジェットを埋め込み
-- **Web3ウォレット接続** - MetaMask対応
+- **Web3ウォレット接続** - MetaMask等のWeb3ウォレット対応
 - **マルチトークン対応** - JPYC、USDCに対応
-- **画像アップロード** - アバター画像をlocalStorageで管理
+- **外部画像URL対応** - imgur、Gravatar等の画像ホスティング対応
+- **短縮URL** - `/t/:id` 形式の短いURL生成
+- **QRコード生成** - モバイルからのアクセスに最適
+- **トランザクション成功UI** - Polygonscanリンク、Twitterシェア機能
 - **レスポンシブデザイン** - モバイル・タブレット・デスクトップ対応
 - **リアルタイムプレビュー** - 埋め込みコードの即座確認
-- **トランザクション追跡** - Polygonscanでの確認
 
 ## 🛠️ 技術スタック
 
 ### フロントエンド
-- **React 19** - UIフレームワーク
-- **TypeScript** - 型安全な開発
-- **Vite** - 高速ビルドツール
-- **Tailwind CSS 4** - ユーティリティファーストCSS
-- **Lucide React** - アイコンライブラリ
+- **React 18** - CDN経由（https://esm.sh）
+- **Tailwind CSS** - CDN経由
+- **純粋JavaScript** - TypeScriptコンパイル不要
 
 ### Web3
-- **wagmi 2.x** - React Hooks for Ethereum
-- **viem 2.x** - TypeScript Ethereum library
+- **Web3 Provider** - window.ethereum (MetaMask等)
+- **ERC-20 Direct Transfer** - approve不要の直接送金
 - **Polygon Mainnet** - レイヤー2ネットワーク
 
-### ルーティング
-- **wouter** - 軽量ルーター
-
-### 通知
-- **sonner** - トースト通知
+### インフラ
+- **Cloudflare Pages** - 静的ホスティング
+- **Cloudflare Pages Functions** - 短縮URLリダイレクト
+- **QR Code API** - api.qrserver.com
 
 ## 📦 対応トークン（Polygon Mainnet）
 
@@ -43,25 +47,31 @@
 
 ## 🚀 セットアップ
 
-### 前提条件
+### 前提条件（開発者向け）
 
-- Node.js 22以上
-- npm または yarn
-- MetaMaskウォレット
+- Node.js 20以上
+- Cloudflare Wrangler CLI
+- MetaMaskウォレット（テスト用）
 - Polygon MainnetのMATIC（ガス代用）
 
-### インストール
+### ローカル開発
 
 ```bash
 # 依存関係のインストール
 npm install
 
-# 開発サーバーの起動
-npm run dev
+# 開発サーバーの起動（Cloudflare Pages Dev）
+npx wrangler pages dev dist --port 3000
 
-# ビルド
-npm run build
+# 本番デプロイ
+npx wrangler pages deploy dist --project-name jpyc-tip
 ```
+
+### エンドユーザー向け
+
+エンドユーザーは以下のみ必要：
+- Web3ウォレット（MetaMask、Coinbase Wallet等）
+- Polygon MainnetのMATIC（少額、ガス代のみ）
 
 ## 📖 使い方
 
@@ -182,8 +192,28 @@ npm run build
 - `address`: 受取人のウォレットアドレス
 - `avatarKey`: localStorageのキー（任意）
 
+## 🎯 Phase 1-3 完了済み
+
+✅ **Phase 1: トランザクションリンク改善**
+- トランザクション成功UI
+- Polygonscanリンクボタン
+- Twitterシェアボタン
+- トランザクションハッシュコピー機能
+
+✅ **Phase 2: 画像ストレージ**
+- 外部画像URL入力対応
+- リアルタイムプレビュー
+- imgur、Gravatar等のホスティング対応
+
+✅ **Phase 3: 短縮URL**
+- `/t/:id` 形式の短縮URL
+- Cloudflare Pages Functions実装
+- localStorage フォールバック機能
+- QRコード生成に短縮URL使用
+
 ## 🚧 未実装機能
 
+- [ ] Cloudflare KVストレージ（短縮URLの永続化）
 - [ ] ダークモード対応
 - [ ] 多言語対応（英語、中国語）
 - [ ] 他のトークン対応（DAI、USDT等）
@@ -191,23 +221,6 @@ npm run build
 - [ ] 投げ銭履歴の表示
 - [ ] メッセージ機能
 - [ ] NFT特典機能
-
-## 📝 今後の改善予定
-
-1. **短期（1-3ヶ月）**
-   - ダークモード実装
-   - 多言語対応
-   - 他のステーブルコイン追加
-
-2. **中期（3-6ヶ月）**
-   - バックエンドAPI構築
-   - 投げ銭履歴機能
-   - 受取人ダッシュボード
-
-3. **長期（6-12ヶ月）**
-   - サブスクリプション機能
-   - NFT連携
-   - ソーシャル機能
 
 ## ⚠️ 制約事項
 
@@ -267,5 +280,6 @@ MIT License
 ---
 
 **最終更新日**: 2025年10月28日  
-**バージョン**: 1.0.0  
-**ステータス**: ✅ 開発完了
+**バージョン**: 2.0.0  
+**ステータス**: ✅ Phase 1-3 完了、本番デプロイ済み  
+**URL**: https://jpyc-tip.pages.dev
