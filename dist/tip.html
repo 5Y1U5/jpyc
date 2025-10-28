@@ -272,11 +272,11 @@
                                         key: preset,
                                         onClick: () => setAmount(preset.toString()),
                                         disabled: !connected,
-                                        className: 'px-4 py-2 rounded-md border-2 transition-all font-semibold ' + (amount === preset.toString() ? 'border-cyan-500 bg-cyan-600 text-white shadow-md' : 'border-gray-300 hover:border-cyan-400 hover:bg-cyan-50') + (!connected ? ' opacity-60 cursor-not-allowed' : '')
+                                        className: 'px-3 py-3 rounded-md border-2 transition-all font-semibold min-h-[4rem] flex items-center justify-center ' + (amount === preset.toString() ? 'border-cyan-500 bg-cyan-600 text-white shadow-md' : 'border-gray-300 hover:border-cyan-400 hover:bg-cyan-50') + (!connected ? ' opacity-60 cursor-not-allowed' : '')
                                     }, 
-                                        React.createElement('div', { className: 'flex flex-col items-center' },
-                                            React.createElement('span', { className: 'text-lg' }, preset.toLocaleString()),
-                                            React.createElement('span', { className: 'text-xs opacity-80' }, selectedToken)
+                                        React.createElement('div', { className: 'flex flex-col items-center gap-0.5' },
+                                            React.createElement('span', { className: 'text-base font-bold' }, preset.toLocaleString()),
+                                            React.createElement('span', { className: 'text-xs opacity-70' }, selectedToken)
                                         )
                                     )
                                 )
