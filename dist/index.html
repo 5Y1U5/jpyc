@@ -100,8 +100,8 @@
                 React.createElement('div', { className: 'max-w-4xl mx-auto space-y-8' },
                     // Header
                     React.createElement('div', { className: 'text-center space-y-4' },
-                        React.createElement('h1', { className: 'text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent' },
-                            'JPYC投げ銭システム'
+                        React.createElement('h1', { className: 'text-4xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent' },
+                            '💸 JPYC投げ銭システム'
                         ),
                         React.createElement('p', { className: 'text-gray-600 text-lg' },
                             '暗号資産で簡単に投げ銭を受け取れる埋め込みコードを生成'
@@ -127,7 +127,7 @@
                                 value: name,
                                 onChange: (e) => setName(e.target.value),
                                 maxLength: 50,
-                                className: 'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
+                                className: 'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500'
                             }),
                             React.createElement('p', { className: 'text-xs text-gray-500' },
                                 '投げ銭ページに表示される名前（最大50文字）'
@@ -160,7 +160,7 @@
                                 placeholder: 'https://example.com/avatar.jpg',
                                 value: avatarUrl,
                                 onChange: handleAvatarUrlChange,
-                                className: 'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
+                                className: 'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500'
                             }),
                             avatarUrl && React.createElement('div', { className: 'flex items-center gap-3' },
                                 React.createElement('img', {
@@ -179,8 +179,8 @@
                         // Generate Button
                         React.createElement('button', {
                             onClick: generateCode,
-                            className: 'w-full h-11 px-8 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors'
-                        }, '埋め込みコードを生成')
+                            className: 'w-full h-11 px-8 rounded-md bg-cyan-600 text-white font-medium hover:bg-cyan-700 transition-colors shadow-md'
+                        }, '🚀 埋め込みコードを生成')
                     ),
                     
                     // Generated Code
@@ -242,7 +242,7 @@
                                     }, 'プレビュー'),
                                     React.createElement('button', {
                                         onClick: () => copyToClipboard(shortUrl),
-                                        className: 'px-3 py-1 text-sm rounded-md bg-blue-600 text-white hover:bg-blue-700'
+                                        className: 'px-3 py-1 text-sm rounded-md bg-cyan-600 text-white hover:bg-cyan-700 shadow-sm'
                                     }, 'コピー')
                                 )
                             ),
